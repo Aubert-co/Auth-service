@@ -12,6 +12,6 @@
     "typeRoots": ["./node_modules/@types", "./src/types"]
 
   },
-  "include": ["src/**/*", "public"],
-  "exclude": ["node_modules","src/tests","src/test-load"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

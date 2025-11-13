@@ -1,0 +1,37 @@
+{
+  "name": "Auth-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Aubert-co/Auth-service.git",
+  "author": "aubert-co <blacket021@gmail.com>",
+  "license": "MIT",
+ "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register src/serve.ts --noEmit",
+    "start": "node dist/serve.js",
+    "build": "tsc --project ./tsconfig.json",
+    "test": "npx jest --watchAll --detectOpenHandles --runInBand --logHeapUsage",
+    "unit": "npx jest /*.spec.ts --watchAll --logHeapUsage"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^6.19.0",
+    "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.10.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3"
+  }
+}
