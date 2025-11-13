@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const helmet_1 = __importDefault(require("helmet"));
 const auth_route_1 = __importDefault(require("./route/auth.route"));
+const error_middleware_1 = require("middleware/error.middleware");
 const globalLimiter = (0, express_rate_limit_1.default)({
     windowMs: 15 * 60 * 1000,
     max: 100,
@@ -36,6 +37,7 @@ app.use((0, cors_1.default)({
 app.use((0, cookie_parser_1.default)());
 app.use(globalLimiter);
 app.use(auth_route_1.default);
+app.use((error, req, res, next) => (0, error_middleware_1.ErrorMiddleware)(error, req, res, next));
 const startServer = async () => {
     try {
         if (process.env.MODE !== "test") {

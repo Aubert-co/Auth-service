@@ -19,17 +19,6 @@ services:
       retries: 5       
       start_period: 10s 
 
-  redis:
-    image: redis:8.0.2
-    restart: always
-    ports:
-      - "6379:6379"
-    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
-    env_file:
-      - .env
-    environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-
   test:
     image: my-express-app:dev 
     build:
@@ -43,8 +32,7 @@ services:
     depends_on:   
       postgres:
         condition: service_healthy
-      redis:
-        condition: service_started
+
     environment:
       - MODE=test
       - POSTGRES_DB=test
@@ -53,11 +41,10 @@ services:
       - ACCESS_TOKEN=loremqiqe
       - REFRESH_TOKEN=loremsss
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
-      - REDIS_URL=redis://default:${REDIS_PASSWORD}@redis:6379
     tty: true
 
 
 
 volumes:
   postgres_data:
-  redis-data:
+

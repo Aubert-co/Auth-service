@@ -1,10 +1,10 @@
-import express from 'express'
+import express ,{Request,Response,NextFunction,ErrorRequestHandler}from 'express'
 import rateLimit from 'express-rate-limit';
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import route from './route/auth.route';
-
+import { ErrorMiddleware } from 'middleware/error.middleware';
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, 
   max: 100,
@@ -36,6 +36,9 @@ app.use( cookieParser())
 app.use( globalLimiter )
 
 app.use(route)
+
+app.use((error:ErrorRequestHandler,req:Request,res:Response,next:NextFunction)=>ErrorMiddleware(error,req,res,next))
+
 const startServer = async()=>{
     try {
       
