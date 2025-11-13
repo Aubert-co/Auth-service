@@ -14,16 +14,18 @@ class AuthUserController {
             res.cookie('token', accessToken, {
                 httpOnly: true,
                 secure: isProduction,
-                sameSite: isProduction ? 'lax' : 'strict',
                 maxAge: 15 * 60 * 1000,
-                path: '/'
+                path: '/',
+                domain: '.aubertdev.com.br',
+                sameSite: 'none'
             })
                 .cookie('refresh', refreshToken, {
                 httpOnly: true,
                 secure: isProduction,
-                sameSite: isProduction ? 'lax' : 'strict',
                 maxAge: 7 * 24 * 60 * 60 * 1000,
-                path: '/'
+                path: '/',
+                domain: '.aubertdev.com.br',
+                sameSite: 'none'
             });
             res.status(201).json({ message: "Login successfully" });
         }
