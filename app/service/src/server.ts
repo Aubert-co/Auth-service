@@ -4,7 +4,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import route from './route/auth.route';
-import { ErrorMiddleware } from 'middleware/error.middleware';
+import { ErrorMiddleware } from './middleware/error.middleware';
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, 
   max: 100,
