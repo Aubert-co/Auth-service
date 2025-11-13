@@ -9,7 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const helmet_1 = __importDefault(require("helmet"));
 const auth_route_1 = __importDefault(require("./route/auth.route"));
-const error_middleware_1 = require("middleware/error.middleware");
+const error_middleware_1 = require("./middleware/error.middleware");
 const globalLimiter = (0, express_rate_limit_1.default)({
     windowMs: 15 * 60 * 1000,
     max: 100,
