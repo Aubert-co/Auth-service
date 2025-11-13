@@ -35,6 +35,7 @@ app.use((0, cors_1.default)({
     origin: "https://market.aubertdev.com.br"
 }));
 app.use((0, cookie_parser_1.default)());
+app.use(express_1.default.json());
 app.use(globalLimiter);
 app.use(auth_route_1.default);
 app.use((error, req, res, next) => (0, error_middleware_1.ErrorMiddleware)(error, req, res, next));
