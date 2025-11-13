@@ -1,11 +1,17 @@
 FROM node:24.0.0
+
 WORKDIR /app
 
-COPY package*.json ./ 
-RUN npm install
 
-RUN npx prisma generate
-COPY . .
+COPY package*.json ./
 
 
-EXPOSE 8080
+RUN npm install --production
+
+COPY dist ./dist
+
+
+EXPOSE 3000
+
+
+CMD ["node", "dist/server.js"]
